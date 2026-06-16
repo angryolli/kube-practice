@@ -7,26 +7,13 @@ Prints a timestamp and UUID to stdout every 5 seconds.
 ```bash
 # build
 cd log_output
-docker build -t log-output .
-
-# cluster
-k3d cluster create -a 2
-kubectl config use-context k3d-k3s-default
+docker build -t log-output:1.3 .
 
 # deploy
-k3d image import log-output
-kubectl create deployment log-output --image=log-output
+k3d image import log-output:1.3
+kubectl apply -f manifests/deployment.yaml
 ```
 
-## Image pull policy
-
-Local image only -> edit the deployment:
-
-```bash
-kubectl edit deployment log-output
-```
-
-Set `imagePullPolicy: IfNotPresent`.
 
 ## Logs
 
