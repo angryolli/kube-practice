@@ -19,4 +19,4 @@ docker run -p 3000:4000 -e PORT=4000 the_project:1.2
 k3d image import the_project:1.2
 
 # create deployment
-kubectl create deployment todo-app --image=the_project:1.2
+kubectl apply -f manifests/deployment.yaml

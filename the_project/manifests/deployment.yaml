@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment  #what kube object
+
+metadata:
+  name: todo-app  #kube name of deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: todo-app   #deploy's filter/search condition.
+
+  template:
+    metadata:
+      labels:
+        app: todo-app   #sticker for pod, must match
+
+    spec:
+      containers:
+        - name: todo-app 
+          image: the_project:1.2
