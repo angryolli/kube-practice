@@ -2,13 +2,15 @@ import os
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def read_root():
-    return {"message": "Todo app"}
+    #return {"message": "Todo app"}
+    return "<h1>Hello from Kubernetes!</h1>"
 
 
 def main():
